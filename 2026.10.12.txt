@@ -1,0 +1,5 @@
+2026.10.12
+agy --conversation=f0f06908-bd94-4196-9088-0170ef5787d6  / 이전대화 
+
+Resume with -c (or command below):
+agy --conversation=65d1a03f-c0f2-43d3-b5c8-da35d5593904 / 앱 만들기. 

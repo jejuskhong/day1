@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>홍수경의 포트폴리오 | Canva Style Profile</title>
+  <!-- 구글 폰트: 감각적인 Plus Jakarta Sans & 깔끔한 Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===================================================
+       1. 디자인 시스템 & 전역 변수 (캔바 파스텔 톤 팔레트)
+       =================================================== */
+    :root {
+      --primary: #FF6600;          /* 캔바 오렌지 / 제주 감귤 */
+      --primary-gradient: linear-gradient(135deg, #FF7A00 0%, #FF4500 100%);
+      --sunset-gradient: linear-gradient(135deg, #FF6B00 0%, #FFA800 50%, #FF3D71 100%);
+      --accent-teal: #00B4D8;       /* 제주 에메랄드 오션 틸 */
+      --accent-mint: #2EC4B6;
+      --accent-purple: #7209B7;
+      --bg-cream: #FBF9F5;         /* 부드럽고 따뜻한 캔바 캔버스 톤 */
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --text-main: #1E293B;        /* 딥 슬레이트 블랙 */
+      --text-muted: #64748B;       /* 세련된 보조 텍스트 */
+      --border-light: rgba(255, 122, 0, 0.12);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.03);
+      --shadow-md: 0 12px 32px rgba(255, 102, 0, 0.08);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.07);
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+    }
+
+    /* 기본 리셋 및 전역 스타일 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+      background-color: var(--bg-cream);
+      /* 캔바 특유의 은은하고 세련된 오로라 메쉬 그라디언트 배경 */
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 122, 0, 0.07) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(0, 180, 216, 0.07) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(255, 61, 113, 0.05) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 30px 20px 60px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===================================================
+       2. 레이아웃: 가로폭 1080px 와이드 캔바 스타일 컨테이너
+       =================================================== */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* 상단 미니 네비게이션 바 (캔바 감성 헤더) */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 28px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #FF5500;
+      letter-spacing: -0.3px;
+    }
+
+    .brand-pill {
+      background: #FFF0E5;
+      color: #FF6600;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tag {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===================================================
+       3. 메인 히어로 섹션 (Hero Section: 2열 와이드 카드)
+       =================================================== */
+    .hero-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 44px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 상단 은은한 캔바 데코 장식 */
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--sunset-gradient);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero-card {
+        padding: 30px 22px;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    /* 히어로 좌측: 타이포그래피 소개 */
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFF3EB;
+      color: #FF6600;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid #FFE0CC;
+      width: fit-content;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #FF5500;
+      border-radius: 50%;
+      box-shadow: 0 0 0 rgba(255, 85, 0, 0.6);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(255, 85, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 85, 0, 0); }
+    }
+
+    .hero-title {
+      font-size: 2.85rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .hero-name-gradient {
+      background: var(--sunset-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: #334155;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+    /* 캔바 스타일 해시태그 칩 목록 */
+    .tags-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .tag-item {
+      background: #F1F5F9;
+      color: #475569;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      transition: all 0.2s ease;
+    }
+
+    .tag-item:hover {
+      background: #FFEFE5;
+      color: #FF5500;
+      transform: translateY(-2px);
+    }
+
+    /* 히어로 우측: 캔바 비주얼 포토 목업 프레임 */
+    .hero-visual {
+      position: relative;
+    }
+
+    .visual-frame {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid #FFFFFF;
+      background: #E0F2FE;
+      height: 330px;
+    }
+
+    .visual-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-visual:hover .visual-frame img {
+      transform: scale(1.05);
+    }
+
+    /* 캔바 스타일 플로팅 스티커 배지 */
+    .floating-badge {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1E293B;
+      z-index: 2;
+    }
+
+    .badge-top {
+      top: -14px;
+      right: -10px;
+      border-bottom: 2px solid #00B4D8;
+    }
+
+    .badge-bottom {
+      bottom: -14px;
+      left: -10px;
+      border-bottom: 2px solid #FF7A00;
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .visual-frame {
+        height: 240px;
+      }
+      .badge-top, .badge-bottom {
+        position: static;
+        margin-top: 10px;
+        display: inline-flex;
+      }
+    }
+
+    /* ===================================================
+       4. 섹션 공통 제목 (캔바 스타일 타이포그래피)
+       =================================================== */
+    .section-header {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* ===================================================
+       5. 이 수업을 신청한 이유 (Canva Quote Banner)
+       =================================================== */
+    .quote-banner {
+      background: linear-gradient(135deg, #FFFFFF 0%, #FFF8F2 100%);
+      border: 1px solid #FFE7D6;
+      border-radius: var(--radius-md);
+      padding: 34px 36px;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .quote-icon-box {
+      background: #FFF0E5;
+      color: #FF5500;
+      width: 58px;
+      height: 58px;
+      flex-shrink: 0;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.12);
+    }
+
+    .quote-body {
+      flex: 1;
+    }
+
+    .quote-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #FF6600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .quote-text {
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: #1E293B;
+      line-height: 1.5;
+      word-break: keep-all;
+      margin-bottom: 8px;
+    }
+
+    .quote-desc {
+      font-size: 0.95rem;
+      color: #64748B;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 640px) {
+      .quote-banner {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+      }
+      .quote-text {
+        font-size: 1.15rem;
+      }
+    }
+
+    /* ===================================================
+       6. 나의 관심사 (Canva Template Cards Grid: 3열)
+       =================================================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 860px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    .canva-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .canva-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: #FFD1B3;
+    }
+
+    /* 카드 상단 포인트 컬러 바 */
+    .card-accent-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+    }
+
+    .accent-orange { background: linear-gradient(90deg, #FF6600, #FFA500); }
+    .accent-blue   { background: linear-gradient(90deg, #00B4D8, #0077B6); }
+    .accent-green  { background: linear-gradient(90deg, #10B981, #059669); }
+
+    .card-top-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .card-icon-pill {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.9rem;
+      transition: transform 0.3s ease;
+    }
+
+    .canva-card:hover .card-icon-pill {
+      transform: scale(1.1) rotate(4deg);
+    }
+
+    .bg-light-orange { background: #FFF3EB; }
+    .bg-light-blue   { background: #E0F2FE; }
+    .bg-light-green  { background: #E8F5E9; }
+
+    .card-category-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .tag-orange { background: #FFF0E6; color: #FF6600; }
+    .tag-blue   { background: #E0F2FE; color: #0284C7; }
+    .tag-green  { background: #E8F5E9; color: #16A34A; }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0F172A;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+      word-break: keep-all;
+    }
+
+    .card-desc {
+      font-size: 0.96rem;
+      color: #64748B;
+      line-height: 1.6;
+      word-break: keep-all;
+      flex-grow: 1;
+    }
+
+    .card-footer-badge {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px dashed #E2E8F0;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===================================================
+       7. 제주 무드보드 갤러리 섹션 (2열 캔바 비주얼)
+       =================================================== */
+    .moodboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 680px) {
+      .moodboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .mood-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 200px;
+      box-shadow: var(--shadow-sm);
+      border: 3px solid #FFFFFF;
+    }
+
+    .mood-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .mood-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .mood-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.75) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px 20px;
+      color: #FFFFFF;
+    }
+
+    .mood-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .mood-desc {
+      font-size: 0.84rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* ===================================================
+       8. 인터랙티브 공감 & 인사말 영역 (Canva Interaction)
+       =================================================== */
+    .interaction-panel {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 40px 30px;
+      text-align: center;
+      border: 1px solid rgba(255, 122, 0, 0.15);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interaction-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #1E293B;
+      margin-bottom: 10px;
+    }
+
+    .interaction-subtitle {
+      font-size: 0.98rem;
+      color: #64748B;
+      margin-bottom: 28px;
+    }
+
+    /* 공감 인터랙션 버튼 */
+    .like-btn-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .like-button {
+      background: var(--sunset-gradient);
+      color: #FFFFFF;
+      border: none;
+      font-family: inherit;
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 16px 40px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(255, 102, 0, 0.35);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .like-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 34px rgba(255, 102, 0, 0.45);
+    }
+
+    .like-button:active {
+      transform: translateY(1px) scale(0.97);
+    }
+
+    .like-counter {
+      background: #FFFFFF;
+      color: #FF5500;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 1.05rem;
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    /* 클릭 시 날아가는 캔바 파티클 효과 */
+    .particle {
+      position: absolute;
+      pointer-events: none;
+      font-size: 1.6rem;
+      animation: floatUp 0.85s forwards ease-out;
+      z-index: 10;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.8);
+      }
+      50% {
+        transform: translate(var(--tx, 0px), -60px) scale(1.3) rotate(var(--rot, 0deg));
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx, 0px), -110px) scale(0.9) rotate(var(--rot, 0deg));
+      }
+    }
+
+    /* 하단 정성스러운 인사 배너 */
+    .greeting-card {
+      background: #FFF7F0;
+      border: 1px dashed #FF9E4A;
+      border-radius: var(--radius-md);
+      padding: 18px 24px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #D45500;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 푸터 */
+    .footer {
+      text-align: center;
+      margin-top: 36px;
+      font-size: 0.85rem;
+      color: #94A3B8;
+      font-weight: 500;
+    }
+
+    /* ===================================================
+       9. 미니 테트리스 게임 섹션 (Canva Mini Game Zone)
+       =================================================== */
+    .tetris-section {
+      margin-bottom: 36px;
+    }
+
+    .tetris-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 34px 28px;
+      border: 1px solid rgba(255, 122, 0, 0.16);
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .tetris-layout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .canvas-container {
+      position: relative;
+      background: #1E293B;
+      padding: 12px;
+      border-radius: 22px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.22);
+      border: 3px solid #334155;
+      display: inline-block;
+    }
+
+    #tetrisCanvas {
+      display: block;
+      background-color: #0F172A;
+      border-radius: 12px;
+    }
+
+    .tetris-overlay {
+      position: absolute;
+      inset: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #FFFFFF;
+      z-index: 5;
+      transition: opacity 0.2s ease;
+      padding: 20px;
+    }
+
+    .tetris-overlay.hidden {
+      display: none;
+    }
+
+    .overlay-icon {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .overlay-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #F8FAFC;
+    }
+
+    /* 사이드 정보 패널 */
+    .tetris-info-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-width: 210px;
+    }
+
+    .stat-boxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #64748B;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FF5500;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .next-box {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #nextCanvas {
+      background: #FFFFFF;
+      border-radius: 8px;
+      margin-top: 6px;
+      border: 1px solid #E2E8F0;
+    }
+
+    .game-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .game-btn {
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 11px 20px;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .primary-game-btn {
+      background: var(--sunset-gradient);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(255, 102, 0, 0.25);
+    }
+
+    .primary-game-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(255, 102, 0, 0.35);
+    }
+
+    .secondary-game-btn {
+      background: #F1F5F9;
+      color: #475569;
+    }
+
+    .secondary-game-btn:hover {
+      background: #E2E8F0;
+      color: #1E293B;
+    }
+
+    .controls-guide {
+      background: #FFF7ED;
+      border: 1px dashed #FFD6A5;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      color: #9A3412;
+      line-height: 1.5;
+    }
+
+    /* 모바일/마우스 터치 컨트롤러 */
+    .touch-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .touch-btn {
+      background: #FFFFFF;
+      color: #1E293B;
+      border: 2px solid #E2E8F0;
+      font-size: 1.05rem;
+      font-weight: 800;
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.15s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .touch-btn:active {
+      transform: scale(0.92);
+      background: #FFF0E5;
+      border-color: #FF7A00;
+      color: #FF5500;
+    }
+
+    .touch-btn-rotate {
+      background: #FFF7ED;
+      border-color: #FFD6A5;
+      color: #EA580C;
+    }
+
+    .touch-btn-drop {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+      color: #2563EB;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- 상단 캔바 스타일 헤더 바 -->
+    <header class="top-nav">
+      <div class="brand-logo">
+        <span>🍊</span>
+        <span>SOOKYOUNG.PORTFOLIO</span>
+        <span class="brand-pill">Canva Edition</span>
+      </div>
+      <div class="nav-tag">
+        <span>🌊 제주 라이프 & AI 크리에이티브</span>
+      </div>
+    </header>
+
+    <!-- 1. 메인 히어로 섹션 (2열 와이드 카드) -->
+    <section class="hero-card">
+      <div class="hero-grid">
+        
+        <!-- 좌측: 소개 타이포그래피 & 태그 -->
+        <div class="hero-content">
+          <div class="status-badge">
+            <span class="pulse-dot"></span>
+            <span>AI × 제주 라이프 크리에이터</span>
+          </div>
+
+          <h1 class="hero-title">
+            배움으로 삶을 채우는<br>
+            <span class="hero-name-gradient">홍수경</span>입니다
+          </h1>
+
+          <p class="hero-subtitle">
+            AI로 다양한 콘텐츠를 만들고, 제주의 풍부한 문화와 삶의 순간들을 정성껏 기록하고 싶어요.
+          </p>
+
+          <!-- 캔바 스타일 해시태그 칩스 -->
+          <div class="tags-group">
+            <span class="tag-item">#AI디지털교육</span>
+            <span class="tag-item">#제주문화기록</span>
+            <span class="tag-item">#인문학의가치</span>
+            <span class="tag-item">#평생성장</span>
+            <span class="tag-item">#새로운도전</span>
+          </div>
+        </div>
+
+        <!-- 우측: 캔바 비주얼 프레임 (제주 바다 & 플로팅 스티커) -->
+        <div class="hero-visual">
+          <div class="floating-badge badge-top">
+            <span>🌊</span>
+            <span>에메랄드빛 제주 바다</span>
+          </div>
+
+          <div class="visual-frame">
+            <img 
+              src="jeju_beach.jpg" 
+              onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'"
+              alt="맑고 투명한 에메랄드빛 바다와 하얀 모래사장 풍경" 
+            >
+          </div>
+
+          <div class="floating-badge badge-bottom">
+            <span>🍊</span>
+            <span>제주에서 피어나는 영감</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. 이 수업을 신청한 이유 (Canva Quote Banner) -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>✨</span>
+          <span>이 수업을 신청한 이유</span>
+        </h2>
+        <span class="section-subtitle">MOTIVATION & GOAL</span>
+      </div>
+
+      <div class="quote-banner">
+        <div class="quote-icon-box">“</div>
+        <div class="quote-body">
+          <div class="quote-label">Learning Purpose</div>
+          <div class="quote-text">
+            AI로 창의적이고, 효율적으로 일을 더 편하게 하는 방법이 궁금해서
+          </div>
+          <div class="quote-desc">
+            단순히 일을 줄이는 것을 넘어, 새로운 기술을 통해 생각의 폭을 넓히고 일상을 더욱 즐겁고 주도적으로 디자인해 나가는 배움의 길을 걷고 있습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 나의 관심사 (Canva Template Cards: 3열 와이드 그리드) -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>💡</span>
+          <span>나의 관심사</span>
+        </h2>
+        <span class="section-subtitle">CORE INTERESTS</span>
+      </div>
+
+      <div class="cards-grid">
+        <!-- 관심사 1: AI 디지털교육 & 기술 -->
+        <div class="canva-card">
+          <div class="card-accent-bar accent-orange"></div>
+          <div class="card-top-info">
+            <div class="card-icon-pill bg-light-orange">🤖</div>
+            <span class="card-category-tag tag-orange">TECH & AI</span>
+          </div>
+          <h3 class="card-title">AI 디지털교육 & 기술</h3>
+          <p class="card-desc">
+            빠르게 변화하는 새로운 인공지능 기술을 친근하게 익히고, 모든 세대가 즐겁게 배울 수 있는 디지털 교육으로 연결합니다.
+          </p>
+          <div class="card-footer-badge">
+            <span>✦ 창의적인 미래 교육 실천</span>
+          </div>
+        </div>
+
+        <!-- 관심사 2: 인문학 & 제주 문화 -->
+        <div class="canva-card">
+          <div class="card-accent-bar accent-blue"></div>
+          <div class="card-top-info">
+            <div class="card-icon-pill bg-light-blue">📚</div>
+            <span class="card-category-tag tag-blue">HUMANITIES</span>
+          </div>
+          <h3 class="card-title">인문학</h3>
+          <p class="card-desc">
+            사람에 대한 따뜻하고 깊은 이해를 바탕으로, 세대를 이어온 제주의 소중한 역사와 독창적인 문화의 가치를 새롭게 조명합니다.
+          </p>
+          <div class="card-footer-badge">
+            <span>✦ 삶과 사람을 잇는 통찰</span>
+          </div>
+        </div>
+
+        <!-- 관심사 3: 평생교육 & 성장 -->
+        <div class="canva-card">
+          <div class="card-accent-bar accent-green"></div>
+          <div class="card-top-info">
+            <div class="card-icon-pill bg-light-green">🌱</div>
+            <span class="card-category-tag tag-green">GROWTH</span>
+          </div>
+          <h3 class="card-title">평생교육</h3>
+          <p class="card-desc">
+            배움에는 멈춤이 없다는 믿음으로, 이웃 및 동료들과 함께 지혜를 나누며 매일 조금씩 성장해 나가는 따뜻한 배움터를 지향합니다.
+          </p>
+          <div class="card-footer-badge">
+            <span>✦ 언제나 푸른 배움의 여정</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 제주 무드보드 (Canva Moodboard Gallery) -->
+    <section>
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>🌿</span>
+          <span>제주의 풍경과 영감</span>
+        </h2>
+        <span class="section-subtitle">JEJU MOODBOARD</span>
+      </div>
+
+      <div class="moodboard-grid">
+        <!-- 무드보드 1: 에메랄드 바다 -->
+        <div class="mood-card">
+          <img 
+            src="jeju_beach.jpg" 
+            onerror="this.src='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'"
+            alt="제주 에메랄드빛 바다"
+          >
+          <div class="mood-overlay">
+            <div class="mood-title">🌊 맑고 깊은 제주 바다</div>
+            <div class="mood-desc">탁 트인 수평선처럼 자유롭고 신선한 영감을 주는 공간</div>
+          </div>
+        </div>
+
+        <!-- 무드보드 2: 싱그러운 자연과 숲 -->
+        <div class="mood-card">
+          <img 
+            src="jeju_nature.jpg" 
+            onerror="this.src='https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80'"
+            alt="제주 자연과 숲"
+          >
+          <div class="mood-overlay">
+            <div class="mood-title">🍃 싱그러운 제주의 자연</div>
+            <div class="mood-desc">마음이 편안해지는 초록빛 쉼과 사색의 순간들</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 재미있는 미니 게임존: 귤빛 미니 테트리스 -->
+    <section class="tetris-section">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>🎮</span>
+          <span>잠깐 쉬어가는 귤빛 미니 테트리스</span>
+        </h2>
+        <span class="section-subtitle">EASY MINI GAME</span>
+      </div>
+
+      <div class="tetris-card">
+        <div class="tetris-layout">
+          <!-- 게임 캔버스 영역 (10x17 그리드, 200x340) -->
+          <div class="canvas-container">
+            <canvas id="tetrisCanvas" width="200" height="340"></canvas>
+            <div id="tetrisOverlay" class="tetris-overlay">
+              <span class="overlay-icon">🍊</span>
+              <p class="overlay-text" id="overlayMsg">누구나 즐기는 쉬운 모드!<br>가볍게 한 판 즐겨보세요</p>
+              <button class="game-btn primary-game-btn" id="overlayBtn">게임 시작하기</button>
+            </div>
+          </div>
+
+          <!-- 사이드 정보 및 제어 패널 -->
+          <div class="tetris-info-panel">
+            <div class="stat-boxes">
+              <div class="stat-box">
+                <div class="stat-label">SCORE</div>
+                <div class="stat-value" id="tetrisScore">0</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-label">LINES</div>
+                <div class="stat-value" id="tetrisLines">0</div>
+              </div>
+            </div>
+
+            <!-- 다음 블록 미리보기 -->
+            <div class="next-box">
+              <div class="stat-label">NEXT BLOCK</div>
+              <canvas id="nextCanvas" width="80" height="80"></canvas>
+            </div>
+
+            <!-- 제어 버튼들 -->
+            <div class="game-actions">
+              <button class="game-btn primary-game-btn" id="startPauseBtn">게임 시작</button>
+              <button class="game-btn secondary-game-btn" id="resetBtn">처음부터 다시</button>
+            </div>
+
+            <!-- 키보드 조작 안내 -->
+            <div class="controls-guide">
+              <p>⌨️ <strong>키보드 조작:</strong><br>← → 이동 / ↑ 회전 / ↓ 내리기<br>Space 바로 떨어뜨리기</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 모바일 & 마우스 터치 컨트롤러 -->
+        <div class="touch-controls">
+          <button class="touch-btn" id="btnLeft" title="왼쪽 이동">◀</button>
+          <button class="touch-btn touch-btn-rotate" id="btnRotate" title="회전">↻ 회전</button>
+          <button class="touch-btn" id="btnRight" title="오른쪽 이동">▶</button>
+          <button class="touch-btn" id="btnDown" title="아래로 내리기">▼</button>
+          <button class="touch-btn touch-btn-drop" id="btnDrop" title="즉시 낙하">⚡ 바로 내리기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 캔바 인터랙티브 공감 & 인사말 영역 -->
+    <section class="interaction-panel">
+      <h2 class="interaction-title">함께 성장하는 여정에 응원을 보내주세요!</h2>
+      <p class="interaction-subtitle">버튼을 클릭하면 기분 좋은 응원 에너지가 충전됩니다 ✨</p>
+
+      <!-- 공감 버튼 영역 -->
+      <div class="like-btn-wrapper" id="btnWrapper">
+        <button class="like-button" id="likeBtn">
+          <span>🍊 공감 & 응원하기</span>
+          <span class="like-counter" id="likeCount">0</span>
+        </button>
+      </div>
+
+      <br>
+
+      <!-- 하단 인사말 배너 -->
+      <div class="greeting-card">
+        <span>🍊</span>
+        <span>만나서 반갑습니다! 오늘도 행복 가득한 하루 보내세요!</span>
+        <span>🍊</span>
+      </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+      <p>© 2026 홍수경. Designed with Canva Vibes · AI & Jeju Life</p>
+    </footer>
+
+  </div>
+
+  <!-- 자바스크립트: 공감 버튼 및 캔바 파티클 인터랙션 -->
+  <script>
+    let count = 0;
+    const likeBtn = document.getElementById('likeBtn');
+    const likeCountSpan = document.getElementById('likeCount');
+    const btnWrapper = document.getElementById('btnWrapper');
+
+    // 파티클에 띄울 이모지 목록
+    const emojis = ['🍊', '✨', '💖', '🎉', '🌱', '⭐', '👏'];
+
+    likeBtn.addEventListener('click', function(e) {
+      // 1. 카운트 증가
+      count += 1;
+      likeCountSpan.textContent = count;
+
+      // 2. 카운터 숫자 팝업 효과
+      likeCountSpan.style.transform = 'scale(1.25)';
+      setTimeout(() => {
+        likeCountSpan.style.transform = 'scale(1)';
+      }, 180);
+
+      // 3. 캔바 감성 플로팅 이모지 파티클 생성
+      for (let i = 0; i < 4; i++) {
+        createParticle();
+      }
+    });
+
+    function createParticle() {
+      const particle = document.createElement('span');
+      particle.className = 'particle';
+      
+      // 랜덤 이모지 선택
+      const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      particle.textContent = randomEmoji;
+
+      // 랜덤 좌우 이동 및 회전 각도
+      const randomX = (Math.random() - 0.5) * 140;
+      const randomRot = (Math.random() - 0.5) * 60;
+      particle.style.setProperty('--tx', `${randomX}px`);
+      particle.style.setProperty('--rot', `${randomRot}deg`);
+
+      // 버튼 중심부 기준 위치 설정
+      particle.style.left = `${50 + (Math.random() - 0.5) * 30}%`;
+      particle.style.top = '20%';
+
+      btnWrapper.appendChild(particle);
+
+      // 애니메이션 종료 후 제거
+      setTimeout(() => {
+        particle.remove();
+      }, 850);
+    }
+    /* ===================================================
+       미니 테트리스 게임 스크립트 (쉬운 미니 모드)
+       =================================================== */
+    (function initTetris() {
+      const COLS = 10;
+      const ROWS = 17;
+      const BLOCK_SIZE = 20;
+      const DROP_INTERVAL = 850; // 초보자용 편안한 속도 (850ms)
+
+      const canvas = document.getElementById('tetrisCanvas');
+      const ctx = canvas.getContext('2d');
+      const nextCanvas = document.getElementById('nextCanvas');
+      const nextCtx = nextCanvas.getContext('2d');
+
+      const scoreEl = document.getElementById('tetrisScore');
+      const linesEl = document.getElementById('tetrisLines');
+      const overlay = document.getElementById('tetrisOverlay');
+      const overlayMsg = document.getElementById('overlayMsg');
+      const overlayBtn = document.getElementById('overlayBtn');
+      const startPauseBtn = document.getElementById('startPauseBtn');
+      const resetBtn = document.getElementById('resetBtn');
+
+      // 캔바 & 제주 감성 컬러 블록 테트로미노 정의
+      const TETROMINOES = {
+        I: { shape: [[1, 1, 1, 1]], color: '#00B4D8' },
+        O: { shape: [[1, 1], [1, 1]], color: '#FFB703' },
+        T: { shape: [[0, 1, 0], [1, 1, 1]], color: '#9D4EDD' },
+        S: { shape: [[0, 1, 1], [1, 1, 0]], color: '#10B981' },
+        Z: { shape: [[1, 1, 0], [0, 1, 1]], color: '#FF5722' },
+        J: { shape: [[1, 0, 0], [1, 1, 1]], color: '#3B82F6' },
+        L: { shape: [[0, 0, 1], [1, 1, 1]], color: '#FF7A00' }
+      };
+
+      const SHAPES = Object.keys(TETROMINOES);
+
+      let grid = createGrid();
+      let currentPiece = null;
+      let currentX = 0;
+      let currentY = 0;
+      let nextPiece = null;
+      let score = 0;
+      let lines = 0;
+      let isPlaying = false;
+      let isPaused = false;
+      let lastDropTime = 0;
+      let animationFrameId = null;
+
+      function createGrid() {
+        return Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+      }
+
+      function getRandomPiece() {
+        const type = SHAPES[Math.floor(Math.random() * SHAPES.length)];
+        return {
+          type: type,
+          shape: TETROMINOES[type].shape,
+          color: TETROMINOES[type].color
+        };
+      }
+
+      function rotate(matrix) {
+        return matrix[0].map((_, i) => matrix.map(row => row[i]).reverse());
+      }
+
+      function checkCollision(pieceShape, offsetX, offsetY) {
+        for (let r = 0; r < pieceShape.length; r++) {
+          for (let c = 0; c < pieceShape[r].length; c++) {
+            if (pieceShape[r][c]) {
+              const newX = offsetX + c;
+              const newY = offsetY + r;
+
+              if (newX < 0 || newX >= COLS || newY >= ROWS) {
+                return true;
+              }
+              if (newY >= 0 && grid[newY][newX]) {
+                return true;
+              }
+            }
+          }
+        }
+        return false;
+      }
+
+      function lockPiece() {
+        for (let r = 0; r < currentPiece.shape.length; r++) {
+          for (let c = 0; c < currentPiece.shape[r].length; c++) {
+            if (currentPiece.shape[r][c]) {
+              const boardY = currentY + r;
+              const boardX = currentX + c;
+              if (boardY >= 0 && boardY < ROWS && boardX >= 0 && boardX < COLS) {
+                grid[boardY][boardX] = currentPiece.color;
+              }
+            }
+          }
+        }
+
+        clearLines();
+        spawnNextPiece();
+      }
+
+      function clearLines() {
+        let cleared = 0;
+        for (let r = ROWS - 1; r >= 0; r--) {
+          if (grid[r].every(cell => cell !== 0)) {
+            grid.splice(r, 1);
+            grid.unshift(Array(COLS).fill(0));
+            cleared++;
+            r++; // 같은 줄 재검사
+          }
+        }
+
+        if (cleared > 0) {
+          lines += cleared;
+          const scoreTable = [0, 100, 300, 600, 1000];
+          score += scoreTable[cleared] || (cleared * 250);
+          scoreEl.textContent = score;
+          linesEl.textContent = lines;
+        }
+      }
+
+      function spawnNextPiece() {
+        if (!nextPiece) {
+          nextPiece = getRandomPiece();
+        }
+        currentPiece = nextPiece;
+        nextPiece = getRandomPiece();
+
+        currentX = Math.floor((COLS - currentPiece.shape[0].length) / 2);
+        currentY = 0;
+
+        drawNextPiece();
+
+        // 생성 즉시 충돌이면 게임 오버
+        if (checkCollision(currentPiece.shape, currentX, currentY)) {
+          gameOver();
+        }
+      }
+
+      function drawBlock(context, x, y, color, size) {
+        context.fillStyle = color;
+        // 캔바 스타일 둥근 사탕 느낌 블록
+        context.beginPath();
+        const r = 4;
+        context.roundRect(x, y, size, size, r);
+        context.fill();
+
+        // 상단 부드러운 입체 하이라이트
+        context.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        context.beginPath();
+        context.roundRect(x + 2, y + 2, size - 4, size / 3, 2);
+        context.fill();
+
+        // 얇은 테두리
+        context.strokeStyle = 'rgba(0, 0, 0, 0.15)';
+        context.lineWidth = 1;
+        context.stroke();
+      }
+
+      function draw() {
+        // 메인 보드 초기화
+        ctx.fillStyle = '#0F172A';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // 은은한 그리드 가이드라인
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.lineWidth = 1;
+        for (let c = 0; c <= COLS; c++) {
+          ctx.beginPath();
+          ctx.moveTo(c * BLOCK_SIZE, 0);
+          ctx.lineTo(c * BLOCK_SIZE, canvas.height);
+          ctx.stroke();
+        }
+        for (let r = 0; r <= ROWS; r++) {
+          ctx.beginPath();
+          ctx.moveTo(0, r * BLOCK_SIZE);
+          ctx.lineTo(canvas.width, r * BLOCK_SIZE);
+          ctx.stroke();
+        }
+
+        // 고정된 블록 그리기
+        for (let r = 0; r < ROWS; r++) {
+          for (let c = 0; c < COLS; c++) {
+            if (grid[r][c]) {
+              drawBlock(ctx, c * BLOCK_SIZE, r * BLOCK_SIZE, grid[r][c], BLOCK_SIZE);
+            }
+          }
+        }
+
+        // 떨어지는 현재 블록 그리기
+        if (currentPiece) {
+          for (let r = 0; r < currentPiece.shape.length; r++) {
+            for (let c = 0; c < currentPiece.shape[r].length; c++) {
+              if (currentPiece.shape[r][c]) {
+                const drawX = (currentX + c) * BLOCK_SIZE;
+                const drawY = (currentY + r) * BLOCK_SIZE;
+                drawBlock(ctx, drawX, drawY, currentPiece.color, BLOCK_SIZE);
+              }
+            }
+          }
+        }
+      }
+
+      function drawNextPiece() {
+        nextCtx.fillStyle = '#FFFFFF';
+        nextCtx.fillRect(0, 0, nextCanvas.width, nextCanvas.height);
+
+        if (!nextPiece) return;
+
+        const pSize = 16;
+        const rows = nextPiece.shape.length;
+        const cols = nextPiece.shape[0].length;
+        const startX = Math.round((nextCanvas.width - cols * pSize) / 2);
+        const startY = Math.round((nextCanvas.height - rows * pSize) / 2);
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            if (nextPiece.shape[r][c]) {
+              drawBlock(nextCtx, startX + c * pSize, startY + r * pSize, nextPiece.color, pSize);
+            }
+          }
+        }
+      }
+
+      function moveLeft() {
+        if (!isPlaying || isPaused) return;
+        if (!checkCollision(currentPiece.shape, currentX - 1, currentY)) {
+          currentX--;
+          draw();
+        }
+      }
+
+      function moveRight() {
+        if (!isPlaying || isPaused) return;
+        if (!checkCollision(currentPiece.shape, currentX + 1, currentY)) {
+          currentX++;
+          draw();
+        }
+      }
+
+      function rotatePiece() {
+        if (!isPlaying || isPaused) return;
+        const rotated = rotate(currentPiece.shape);
+        // 회전 후 벽에 걸릴 때 가볍게 안쪽으로 밀어주는 킥(Wall kick)
+        let kickX = 0;
+        if (checkCollision(rotated, currentX, currentY)) {
+          if (!checkCollision(rotated, currentX - 1, currentY)) kickX = -1;
+          else if (!checkCollision(rotated, currentX + 1, currentY)) kickX = 1;
+          else return;
+        }
+        currentX += kickX;
+        currentPiece.shape = rotated;
+        draw();
+      }
+
+      function moveDown() {
+        if (!isPlaying || isPaused) return false;
+        if (!checkCollision(currentPiece.shape, currentX, currentY + 1)) {
+          currentY++;
+          draw();
+          return true;
+        } else {
+          lockPiece();
+          draw();
+          return false;
+        }
+      }
+
+      function hardDrop() {
+        if (!isPlaying || isPaused) return;
+        while (!checkCollision(currentPiece.shape, currentX, currentY + 1)) {
+          currentY++;
+        }
+        lockPiece();
+        draw();
+      }
+
+      function gameLoop(timestamp) {
+        if (!isPlaying) return;
+
+        if (!isPaused) {
+          if (timestamp - lastDropTime > DROP_INTERVAL) {
+            moveDown();
+            lastDropTime = timestamp;
+          }
+        }
+
+        animationFrameId = requestAnimationFrame(gameLoop);
+      }
+
+      function startGame() {
+        grid = createGrid();
+        score = 0;
+        lines = 0;
+        scoreEl.textContent = '0';
+        linesEl.textContent = '0';
+        isPlaying = true;
+        isPaused = false;
+        overlay.classList.add('hidden');
+        startPauseBtn.textContent = '일시 정지';
+        startPauseBtn.className = 'game-btn secondary-game-btn';
+
+        nextPiece = getRandomPiece();
+        spawnNextPiece();
+        draw();
+
+        lastDropTime = performance.now();
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        animationFrameId = requestAnimationFrame(gameLoop);
+      }
+
+      function pauseGame() {
+        if (!isPlaying) return;
+        isPaused = !isPaused;
+        if (isPaused) {
+          startPauseBtn.textContent = '계속 하기';
+          startPauseBtn.className = 'game-btn primary-game-btn';
+          overlayMsg.innerHTML = '게임이 일시정지 되었습니다<br>편안히 쉬어가세요 ☕';
+          overlayBtn.textContent = '계속 진행하기';
+          overlay.classList.remove('hidden');
+        } else {
+          startPauseBtn.textContent = '일시 정지';
+          startPauseBtn.className = 'game-btn secondary-game-btn';
+          overlay.classList.add('hidden');
+          lastDropTime = performance.now();
+        }
+      }
+
+      function gameOver() {
+        isPlaying = false;
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        overlayMsg.innerHTML = `🍊 멋진 플레이였습니다!<br>최종 점수: <strong>${score}점</strong> (${lines}줄)`;
+        overlayBtn.textContent = '다시 도전하기';
+        overlay.classList.remove('hidden');
+        startPauseBtn.textContent = '게임 시작';
+        startPauseBtn.className = 'game-btn primary-game-btn';
+      }
+
+      function resetGame() {
+        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        grid = createGrid();
+        score = 0;
+        lines = 0;
+        scoreEl.textContent = '0';
+        linesEl.textContent = '0';
+        currentPiece = null;
+        nextPiece = null;
+        isPlaying = false;
+        isPaused = false;
+        draw();
+        drawNextPiece();
+        overlayMsg.innerHTML = '누구나 즐기는 쉬운 모드!<br>가볍게 한 판 즐겨보세요';
+        overlayBtn.textContent = '게임 시작하기';
+        overlay.classList.remove('hidden');
+        startPauseBtn.textContent = '게임 시작';
+        startPauseBtn.className = 'game-btn primary-game-btn';
+      }
+
+      // 이벤트 리스너: 버튼들
+      overlayBtn.addEventListener('click', function() {
+        if (!isPlaying) startGame();
+        else if (isPaused) pauseGame();
+      });
+
+      startPauseBtn.addEventListener('click', function() {
+        if (!isPlaying) startGame();
+        else pauseGame();
+      });
+
+      resetBtn.addEventListener('click', resetGame);
+
+      // 키보드 조작 이벤트 (게임 활성 시 스크롤 방지)
+      window.addEventListener('keydown', function(e) {
+        if (!isPlaying || isPaused) return;
+
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+          e.preventDefault();
+        }
+
+        switch (e.key) {
+          case 'ArrowLeft': moveLeft(); break;
+          case 'ArrowRight': moveRight(); break;
+          case 'ArrowUp': rotatePiece(); break;
+          case 'ArrowDown': moveDown(); break;
+          case ' ': hardDrop(); break;
+        }
+      });
+
+      // 모바일 & 터치 컨트롤 버튼들
+      document.getElementById('btnLeft').addEventListener('click', moveLeft);
+      document.getElementById('btnRight').addEventListener('click', moveRight);
+      document.getElementById('btnRotate').addEventListener('click', rotatePiece);
+      document.getElementById('btnDown').addEventListener('click', moveDown);
+      document.getElementById('btnDrop').addEventListener('click', hardDrop);
+
+      // 초기 화면 렌더링
+      draw();
+      drawNextPiece();
+    })();
+  </script>
+
+</body>
+</html>
+

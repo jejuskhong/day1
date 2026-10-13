@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLI 사용법 및 필수 단축키 가이드</title>
+  <!-- 가독성 좋은 구글 Noto Sans KR 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #F4F6F9;
+      color: #2D3748;
+      line-height: 1.8;
+      padding: 30px 16px;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    /* 상단 헤더 배너 */
+    .hero-header {
+      background: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+      color: #FFFFFF;
+      padding: 40px 28px;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      margin-bottom: 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(72, 187, 120, 0.2);
+      color: #68D391;
+      border: 1px solid #48BB78;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #CBD5E0;
+      word-break: keep-all;
+    }
+
+    /* 공통 카드 박스 */
+    .card-section {
+      background: #FFFFFF;
+      padding: 32px 28px;
+      border-radius: 22px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border: 1px solid #E2E8F0;
+      margin-bottom: 26px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1A202C;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #EDF2F7;
+      padding-bottom: 12px;
+    }
+
+    /* 1. CLI vs GUI 비교 상자 */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 620px) {
+      .compare-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .compare-box {
+      padding: 22px 20px;
+      border-radius: 16px;
+      border: 1.5px solid;
+    }
+
+    .compare-gui {
+      background: #EDF2F7;
+      border-color: #CBD5E0;
+    }
+
+    .compare-cli {
+      background: #F0FFF4;
+      border-color: #9AE6B4;
+    }
+
+    .compare-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .compare-gui .compare-title { color: #4A5568; }
+    .compare-cli .compare-title { color: #22543D; }
+
+    .compare-desc {
+      font-size: 0.95rem;
+      color: #4A5568;
+      line-height: 1.6;
+    }
+
+    .callout-box {
+      background: #FEFCBF;
+      border-left: 5px solid #D69E2E;
+      padding: 16px 20px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #744210;
+      line-height: 1.6;
+    }
+
+    /* 2. 명령어 리스트 카드 */
+    .cmd-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cmd-item {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .cmd-item:hover {
+      border-color: #48BB78;
+      transform: translateY(-2px);
+    }
+
+    .cmd-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cmd-code {
+      font-family: 'JetBrains Mono', monospace;
+      background: #2D3748;
+      color: #48BB78;
+      padding: 4px 14px;
+      border-radius: 8px;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .cmd-badge-best {
+      background: #FF6B00;
+      color: #FFFFFF;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+
+    .cmd-meaning {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #2D3748;
+    }
+
+    .cmd-analogy {
+      font-size: 0.95rem;
+      color: #4A5568;
+      line-height: 1.5;
+    }
+
+    /* 3. 단축키 그리드 */
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 600px) {
+      .shortcut-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .shortcut-card {
+      background: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .shortcut-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .kbd {
+      font-family: 'JetBrains Mono', monospace;
+      background: #EDF2F7;
+      color: #2D3748;
+      border: 1px solid #CBD5E0;
+      border-bottom: 3px solid #A0AEC0;
+      padding: 3px 10px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .shortcut-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1A202C;
+    }
+
+    .shortcut-desc {
+      font-size: 0.9rem;
+      color: #4A5568;
+      line-height: 1.5;
+    }
+
+    /* 4. 브라우저 단축키 강조 상자 */
+    .highlight-card {
+      background: linear-gradient(135deg, #EBF8FF 0%, #E6FFFA 100%);
+      border: 2px solid #81E6D9;
+      border-radius: 18px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+    }
+
+    .highlight-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .highlight-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #234E52;
+    }
+
+    .highlight-desc {
+      font-size: 0.95rem;
+      color: #285E61;
+      line-height: 1.6;
+    }
+
+    /* 하단 푸터 */
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #718096;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 상단 헤더 -->
+    <header class="hero-header">
+      <span class="hero-badge">초보자 맞춤 학습 가이드</span>
+      <h1 class="hero-title">💻 CLI 사용법 및 필수 단축키</h1>
+      <p class="hero-desc">마우스 대신 키보드로 컴퓨터와 빠르게 소통하는 비밀 꿀팁 총정리!</p>
+    </header>
+
+    <!-- 1. CLI란 무엇인가요? -->
+    <section class="card-section">
+      <h2 class="section-title">🧭 1. CLI란 무엇인가요? (식당 비유 🍽️)</h2>
+      <div class="compare-grid">
+        <div class="compare-box compare-gui">
+          <div class="compare-title">🖱️ GUI (평소 사용하는 방식)</div>
+          <p class="compare-desc">
+            마우스로 폴더 아이콘을 더블 클릭하고 창을 엽니다.<br>
+            <strong>식당 키오스크 화면</strong>을 손가락으로 꾹꾹 누르는 것과 같습니다.
+          </p>
+        </div>
+        <div class="compare-box compare-cli">
+          <div class="compare-title">⌨️ CLI (개발자의 방식)</div>
+          <p class="compare-desc">
+            검은 화면(터미널)에 명령어를 글자로 칩니다.<br>
+            <strong>식당 점원에게 "김치찌개 하나 주세요"</strong> 하고 말(글자)로 주문하는 것과 같습니다.
+          </p>
+        </div>
+      </div>
+      <div class="callout-box">
+        💡 <strong>왜 쓸까요?</strong> 마우스로 10번 클릭해야 할 복잡한 작업도, 명령어 한 줄로 1초 만에 끝낼 수 있고 AI가 컴퓨터를 조작할 때 가장 정확하기 때문입니다!
+      </div>
+    </section>
+
+    <!-- 2. 필수 기본 명령어 -->
+    <section class="card-section">
+      <h2 class="section-title">📂 2. 꼭 알아야 하는 기본 명령어 6가지</h2>
+      <div class="cmd-list">
+        <!-- 1: dir -->
+        <div class="cmd-item">
+          <div class="cmd-top">
+            <span class="cmd-code">dir</span>
+            <span class="cmd-meaning">현재 폴더 내용물(파일 목록) 보기</span>
+          </div>
+          <p class="cmd-analogy">
+            🔍 <em>"지금 내가 서 있는 이 방(폴더)에 무슨 서랍과 파일이 있나요?"</em> 하고 확인하는 명령어입니다.
+          </p>
+        </div>
+
+        <!-- 2: cd 폴더명 -->
+        <div class="cmd-item">
+          <div class="cmd-top">
+            <span class="cmd-code">cd day1</span>
+            <span class="cmd-meaning">원하는 폴더 안으로 쏙 들어가기</span>
+          </div>
+          <p class="cmd-analogy">
+            🚪 <em>Change Directory의 약자.</em> "day1이라는 방 문을 열고 안으로 들어갑니다."
+          </p>
+        </div>
+
+        <!-- 3: cd .. -->
+        <div class="cmd-item">
+          <div class="cmd-top">
+            <span class="cmd-code">cd ..</span>
+            <span class="cmd-meaning">뒤로 가기 (상위 폴더로 빠져나오기)</span>
+          </div>
+          <p class="cmd-analogy">
+            🔙 점 두 개(..)는 부모 폴더를 뜻합니다. 탐색기의 <strong>[뒤로 가기]</strong> 버튼과 같습니다.
+          </p>
+        </div>
+
+        <!-- 4: mkdir 폴더명 -->
+        <div class="cmd-item">
+          <div class="cmd-top">
+            <span class="cmd-code">mkdir test</span>
+            <span class="cmd-meaning">새 폴더 만들기</span>
+          </div>
+          <p class="cmd-analogy">
+            📁 마우스 우클릭 후 <strong>[새로 만들기] → [폴더]</strong>를 누르는 것과 똑같습니다.
+          </p>
+        </div>
+
+        <!-- 5: cls -->
+        <div class="cmd-item">
+          <div class="cmd-top">
+            <span class="cmd-code">cls</span>
+            <span class="cmd-meaning">화면 깨끗하게 지우기 (청소)</span>
+          </div>
+          <p class="cmd-analogy">
+            🧹 글자가 너무 많아 어지러울 때, 칠판을 지우개로 싹 지우고 맨 위로 올려줍니다.
+          </p>
+        </div>
+
+        <!-- 6: explorer . -->
+        <div class="cmd-item">
+          <div class="cmd-top">
+            <span class="cmd-code">explorer .</span>
+            <span class="cmd-badge-best">강력 추천 꿀팁 ⭐</span>
+            <span class="cmd-meaning">현재 폴더를 윈도우 창으로 바로 열기!</span>
+          </div>
+          <p class="cmd-analogy">
+            ✨ 점 하나(.)는 '현재 위치'를 뜻합니다. 지금 있는 폴더를 내 눈앞에 <strong>윈도우 파일 탐색기 창으로 짠!</strong> 하고 열어줍니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 터미널 필수 단축키 -->
+    <section class="card-section">
+      <h2 class="section-title">⚡ 3. 작업 속도 3배 올려주는 마법의 단축키</h2>
+      <div class="shortcut-grid">
+        <div class="shortcut-card">
+          <div class="shortcut-header">
+            <span class="kbd">Tab</span>
+            <span class="shortcut-title">파일명 자동 완성 (최고의 꿀팁!)</span>
+          </div>
+          <p class="shortcut-desc">
+            긴 파일명을 다 칠 필요 없이 앞 글자(예: <code>qu</code>)만 치고 <span class="kbd">Tab</span>을 누르면 <code>quiz.html</code>이 자동으로 완성됩니다. 오타 걱정 제로!
+          </p>
+        </div>
+
+        <div class="shortcut-card">
+          <div class="shortcut-header">
+            <span class="kbd">↑</span>
+            <span class="shortcut-title">이전 명령어 다시 부르기</span>
+          </div>
+          <p class="shortcut-desc">
+            방금 입력했던 긴 명령어를 키보드 위 화살표 <span class="kbd">↑</span> 하나로 다시 불러옵니다. 똑같은 걸 두 번 칠 필요가 없습니다.
+          </p>
+        </div>
+
+        <div class="shortcut-card">
+          <div class="shortcut-header">
+            <span class="kbd">Ctrl + C</span>
+            <span class="shortcut-title">긴급 정지 (작업 취소)</span>
+          </div>
+          <p class="shortcut-desc">
+            명령어가 멈추지 않고 계속 돌거나 취소하고 싶을 때 누르면 "지금 하던 거 즉시 멈춰!" 하고 빠져나옵니다.
+          </p>
+        </div>
+
+        <div class="shortcut-card">
+          <div class="shortcut-header">
+            <span class="kbd">Shift + Enter</span>
+            <span class="shortcut-title">AI 대화창 줄바꿈</span>
+          </div>
+          <p class="shortcut-desc">
+            AI 비서에게 질문을 보낼 때 엔터만 치면 전송되어 버리지만, <span class="kbd">Shift</span>를 누르고 <span class="kbd">Enter</span>를 치면 여러 줄로 편하게 작성할 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 브라우저 비밀 단축키 -->
+    <section class="card-section">
+      <h2 class="section-title">🌐 4. 웹 실습할 때 꼭 알아야 할 브라우저 비밀 키</h2>
+      
+      <div class="highlight-card">
+        <div class="highlight-header">
+          <span class="kbd">Ctrl + Shift + R</span>
+          <span class="highlight-title">강력 새로고침 (하드 리프레시)</span>
+        </div>
+        <p class="highlight-desc">
+          브라우저는 속도를 빠르게 하려고 이전 사진과 코드를 컴퓨터에 몰래 저장(캐시)해 둡니다. 코드를 고치고 <span class="kbd">F5</span>를 눌러도 안 바뀔 때, <strong>Ctrl + Shift + R</strong>을 누르면 <strong>"옛날 기억 싹 지우고 방금 고친 새 코드로 전부 다시 불러와!"</strong> 하고 진짜 최신 화면을 띄워줍니다!
+        </p>
+      </div>
+
+      <div class="highlight-card" style="background: linear-gradient(135deg, #FFF5F5 0%, #FFF0EB 100%); border-color: #FEB2B2;">
+        <div class="highlight-header">
+          <span class="kbd">F12</span>
+          <span class="highlight-title" style="color: #9B2C2C;">개발자 도구 (Console 에러 확인)</span>
+        </div>
+        <p class="highlight-desc" style="color: #742A2A;">
+          버튼을 눌렀는데 화면에 아무 반응이 없거나 코드가 틀렸을 때, <span class="kbd">F12</span>를 누르고 상단의 <strong>[Console]</strong> 탭을 누르면 빨간 글씨로 <strong>어디가 틀렸는지</strong> 원인을 친절하게 알려줍니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 하단 푸터 -->
+    <footer class="footer">
+      <p>단축키와 CLI를 내 손에 익히면 AI 코딩이 훨씬 더 쉽고 재미있어집니다! 🚀</p>
+    </footer>
+  </div>
+
+</body>
+</html>

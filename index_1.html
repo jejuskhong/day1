@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>홍수경의 자기소개 - 한라산 숲 에디션</title>
+  <!-- 가독성이 뛰어난 구글 한글 폰트 (Noto Sans KR) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* 1. 기본 스타일 (한라산 숲 초록색 테마 - 낮 모드) */
+    :root {
+      --bg-color: #F3F7F4;
+      --card-bg: #FFFFFF;
+      --text-main: #233127;
+      --text-sub: #526356;
+      --forest-green: #1E5C38;
+      --forest-light: #E0EFE6;
+      --forest-border: #CBE2D3;
+      --button-bg: #1E5C38;
+      --button-text: #FFFFFF;
+      --shadow-color: rgba(30, 92, 56, 0.08);
+    }
+
+    /* 2. 밤 모드 (다크 모드) 색상 */
+    body.dark-mode {
+      --bg-color: #121A14;
+      --card-bg: #1A261E;
+      --text-main: #E3EDE5;
+      --text-sub: #A8BAAC;
+      --forest-green: #59C587;
+      --forest-light: #233529;
+      --forest-border: #2D4435;
+      --button-bg: #2B3D30;
+      --button-text: #E3EDE5;
+      --shadow-color: rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 24px 16px;
+    }
+
+    /* 반응형 컨테이너 */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* 오른쪽 상단 밤 모드 버튼 */
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .theme-toggle-btn {
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      border: 2px solid var(--forest-border);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px var(--shadow-color);
+      user-select: none;
+    }
+
+    .theme-toggle-btn:hover {
+      border-color: var(--forest-green);
+    }
+
+    /* 상단 헤더 (이름 및 한 줄 소개) */
+    .header {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 38px 24px;
+      border-radius: 24px;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      border: 2px solid var(--forest-border);
+      margin-bottom: 24px;
+    }
+
+    .badge-icon {
+      font-size: 3.2rem;
+      margin-bottom: 8px;
+    }
+
+    .name {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--forest-green);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .intro-line {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-sub);
+      word-break: keep-all;
+    }
+
+    /* 섹션 제목 */
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 이 수업을 신청한 이유 박스 */
+    .reason-box {
+      background: var(--card-bg);
+      padding: 26px 22px;
+      border-radius: 20px;
+      border-left: 6px solid var(--forest-green);
+      box-shadow: 0 4px 16px var(--shadow-color);
+      margin-bottom: 28px;
+      border-top: 1px solid var(--forest-border);
+      border-right: 1px solid var(--forest-border);
+      border-bottom: 1px solid var(--forest-border);
+    }
+
+    .reason-text {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-main);
+      word-break: keep-all;
+    }
+
+    /* 나의 관심사 카드 목록 */
+    .interests-container {
+      margin-bottom: 36px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 26px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--forest-border);
+      box-shadow: 0 4px 14px var(--shadow-color);
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px var(--shadow-color);
+    }
+
+    .card-emoji {
+      font-size: 2.6rem;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--forest-green);
+      margin-bottom: 8px;
+      word-break: keep-all;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      word-break: keep-all;
+      line-height: 1.5;
+    }
+
+    /* 하단 푸터 */
+    .footer {
+      text-align: center;
+      padding: 20px 0 30px;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 오른쪽 상단: 밤 모드 전환 버튼 -->
+    <div class="top-bar">
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <span id="themeIcon">🌙</span>
+        <span id="themeText">밤 모드</span>
+      </button>
+    </div>
+
+    <!-- 상단 소개 영역 -->
+    <header class="header">
+      <div class="badge-icon">🌲</div>
+      <h1 class="name">홍수경</h1>
+      <p class="intro-line">제주도를 사랑하는 제주인</p>
+    </header>
+
+    <!-- 이 수업을 신청한 이유 -->
+    <section>
+      <h2 class="section-title">🌿 이 수업을 신청한 이유</h2>
+      <div class="reason-box">
+        <p class="reason-text">
+          AI로 일을 더 편하게 하는 방법이 궁금해서
+        </p>
+      </div>
+    </section>
+
+    <!-- 나의 관심사 영역 -->
+    <section class="interests-container">
+      <h2 class="section-title">🍃 나의 관심사</h2>
+      <div class="cards-grid">
+        <!-- 관심사 1: AI교육 -->
+        <div class="card">
+          <div class="card-emoji">🤖</div>
+          <h3 class="card-title">AI교육</h3>
+          <p class="card-desc">인공지능을 쉽고 유익하게 배우고 일상에 적용하는 교육</p>
+        </div>
+
+        <!-- 관심사 2: 평생교육 -->
+        <div class="card">
+          <div class="card-emoji">🌱</div>
+          <h3 class="card-title">평생교육</h3>
+          <p class="card-desc">나이에 상관없이 언제나 새로운 지혜를 함께 채워가는 배움</p>
+        </div>
+
+        <!-- 관심사 3: 여행 -->
+        <div class="card">
+          <div class="card-emoji">✈️</div>
+          <h3 class="card-title">여행</h3>
+          <p class="card-desc">아름다운 제주 자연과 새로운 세상을 만나는 설레는 여정</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 문구 -->
+    <footer class="footer">
+      <p>🌿 한라산의 맑은 숲처럼 싱그럽고 편안한 하루 보내세요!</p>
+    </footer>
+  </div>
+
+  <!-- 자바스크립트: 밤 모드 토글 기능 -->
+  <script>
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
+
+    themeToggleBtn.addEventListener('click', function() {
+      // body 태그에 dark-mode 클래스 추가 또는 제거
+      document.body.classList.toggle('dark-mode');
+
+      // 밤 모드 활성화 여부에 따라 버튼 문구 변경
+      if (document.body.classList.contains('dark-mode')) {
+        themeIcon.textContent = '☀️';
+        themeText.textContent = '낮 모드';
+      } else {
+        themeIcon.textContent = '🌙';
+        themeText.textContent = '밤 모드';
+      }
+    });
+  </script>
+
+</body>
+</html>

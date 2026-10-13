@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제주 퀴즈 타임!</title>
+  <!-- 가독성 좋은 구글 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #F4F7F5;
+      color: #333333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .quiz-card {
+      background: #FFFFFF;
+      width: 100%;
+      max-width: 520px;
+      padding: 40px 28px;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      border: 2px solid #E2EBE5;
+    }
+
+    .quiz-icon {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+    }
+
+    .quiz-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #2E7D32;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .question {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1B382B;
+      margin-bottom: 30px;
+      word-break: keep-all;
+      line-height: 1.4;
+    }
+
+    .btn-show {
+      background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+      color: #FFFFFF;
+      border: none;
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(46, 125, 50, 0.3);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      user-select: none;
+    }
+
+    .btn-show:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+    }
+
+    .btn-show:active {
+      transform: scale(0.96);
+    }
+
+    /* 답 입력 칸 스타일 */
+    .input-group {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .answer-input {
+      width: 100%;
+      max-width: 320px;
+      padding: 14px 20px;
+      font-size: 1.2rem;
+      border: 2px solid #C8E6C9;
+      border-radius: 16px;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      font-family: inherit;
+    }
+
+    .answer-input:focus {
+      border-color: #2E7D32;
+      box-shadow: 0 0 12px rgba(46, 125, 50, 0.2);
+    }
+
+    .answer-box {
+      margin-top: 24px;
+      padding: 22px 18px;
+      border-radius: 18px;
+      display: none; /* 클릭 전에는 숨김 */
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* 정답일 때 (초록빛) */
+    .answer-box.correct {
+      background-color: #E8F5E9;
+      border: 2px solid #4CAF50;
+    }
+    .answer-box.correct .answer-label {
+      color: #2E7D32;
+    }
+    .answer-box.correct .answer-text {
+      color: #1B5E20;
+    }
+
+    /* 오답일 때 (붉은빛) */
+    .answer-box.wrong {
+      background-color: #FFEBEE;
+      border: 2px solid #EF5350;
+    }
+    .answer-box.wrong .answer-label {
+      color: #D32F2F;
+    }
+    .answer-box.wrong .answer-text {
+      color: #C62828;
+      font-size: 1.3rem;
+    }
+
+    /* 빈칸일 때 (노란빛) */
+    .answer-box.empty {
+      background-color: #FFF8E1;
+      border: 2px solid #FFB300;
+    }
+    .answer-box.empty .answer-label {
+      color: #F57F17;
+    }
+    .answer-box.empty .answer-text {
+      color: #E65100;
+      font-size: 1.2rem;
+    }
+
+    .answer-label {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .answer-text {
+      font-size: 1.8rem;
+      font-weight: 800;
+      word-break: keep-all;
+    }
+
+    .hint-note {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: #888888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-card">
+    <div class="quiz-icon">🏔️</div>
+    <div class="quiz-title">✨ 오늘의 제주 상식 퀴즈</div>
+    <h1 class="question">제주에서 가장 높은 산은?</h1>
+
+    <!-- 답을 넣는 입력 칸과 확인 버튼 -->
+    <div class="input-group">
+      <input type="text" class="answer-input" id="userAnswer" placeholder="정답을 입력해 보세요">
+      <button class="btn-show" id="quizButton">정답 확인</button>
+    </div>
+
+    <!-- 정답/오답 결과가 나타날 상자 -->
+    <div class="answer-box" id="answerBox">
+      <p class="answer-label" id="resultLabel"></p>
+      <p class="answer-text" id="resultText"></p>
+    </div>
+
+    <p class="hint-note">정답을 입력하고 [정답 확인] 버튼을 누르거나 Enter를 쳐보세요!</p>
+  </div>
+
+  <!-- 자바스크립트 코드 (정답/오답 판정) -->
+  <script>
+    const quizButton = document.getElementById('quizButton');
+    const userAnswerInput = document.getElementById('userAnswer');
+    const answerBox = document.getElementById('answerBox');
+    const resultLabel = document.getElementById('resultLabel');
+    const resultText = document.getElementById('resultText');
+
+    function checkAnswer() {
+      const userText = userAnswerInput.value.trim();
+
+      // 결과 상자 보여주기
+      answerBox.style.display = 'block';
+
+      if (userText === '') {
+        // 1. 빈칸일 때
+        answerBox.className = 'answer-box empty';
+        resultLabel.textContent = '⚠️ 입력 안내';
+        resultText.textContent = '정답을 먼저 입력창에 적어주세요!';
+      } else if (userText === '한라산' || userText === '한라산입니다') {
+        // 2. 정답일 때
+        answerBox.className = 'answer-box correct';
+        resultLabel.textContent = '🎉 딩동댕! 정답입니다!';
+        resultText.textContent = '🏔️ 한라산 (해발 1,947m)';
+      } else {
+        // 3. 오답일 때
+        answerBox.className = 'answer-box wrong';
+        resultLabel.textContent = '❌ 땡! 아쉽지만 오답이에요.';
+        resultText.textContent = `'${userText}'이(가) 아니라 '한라산'입니다!`;
+      }
+    }
+
+    // 버튼 클릭 시 정답 체크
+    quizButton.addEventListener('click', checkAnswer);
+
+    // 엔터(Enter) 키 입력 시에도 바로 확인
+    userAnswerInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        checkAnswer();
+      }
+    });
+  </script>
+
+</body>
+</html>
